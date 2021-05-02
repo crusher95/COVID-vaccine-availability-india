@@ -14,8 +14,10 @@ Update config.json:
 }
 ```
 
-Call me bot API key: [Get API key](https://www.callmebot.com/blog/free-api-whatsapp-bot/) API key
+Call me bot API key: [Get API key](https://www.callmebot.com/blog/free-api-whatsapp-bot/).
 
 Run the following command in your terminal:
 `python3 cowin_slot_available.py`
 
+
+![image](https://raw.githubusercontent.com/crusher95/COVID-vaccine-availability-india/master/Sample%20Screenshot.png)
