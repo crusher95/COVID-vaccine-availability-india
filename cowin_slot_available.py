@@ -11,20 +11,9 @@ date_format = "%d-%m-%Y"
 whatsapp_update_number = "https://api.callmebot.com/whatsapp.php?phone={}&text={}&apikey={}"
 
 http = urllib3.PoolManager()
-notify_to = {
-	"+918879963918": {
-		"districts": [650, 651],
-		"api_key": "652314"
-	},
-	"+919920773997": {
-		"districts": [392],
-		"api_key": "305749"
-	},
-	"+919033174309": {
-		"districts": [165],
-		"api_key": "119931"
-	}
-}
+
+with open("config.json") as f:
+	notify_to = json.load(f)
 
 for user in notify_to.keys():
 	#checks for next 6 weeks
