@@ -46,11 +46,17 @@ for user in notify_to.keys():
 	for slot in result['18+'].keys():
 		availabile_18 += slot + "({}) - {}, ".format(result['18+'][slot]['available_capacity'], result['18+'][slot]['dates'][0])
 
-
+	pprint(user)
+	with open('last_response.json') as f:
+		data = json.load(f)
 	if availabile_18!="":
 		message = message.format(availabile_18)
-		r = http.request('GET', whatsapp_update_number.format(user, message, notify_to[user]['api_key']))
+		if user not in data or data[user] != message: 
+			data[user] = message
+			r = http.request('GET', whatsapp_update_number.format(user, message, notify_to[user]['api_key']))
 		pprint("Available")
-		pprint(user)
 	else:
+		data[user] = ""
 		pprint("Not Available")
+	with open('last_response.json', 'w') as outfile:
+		json.dump(data, outfile)
