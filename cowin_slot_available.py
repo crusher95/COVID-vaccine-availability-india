@@ -32,6 +32,8 @@ for user in notify_to.keys():
 								key_name = '45+'
 							elif session['min_age_limit'] >= 18:
 								key_name = '18+'
+								pprint(url)
+								# pprint(center)
 							if center['name'] not in result[key_name]:
 								result[key_name][center['name']] = {'available_capacity': 0, 'dates': [], 'vaccine': session['vaccine'], 'fee_type': center['fee_type']}
 							result[key_name][center['name']]['available_capacity'] += session['available_capacity']
@@ -43,6 +45,7 @@ for user in notify_to.keys():
 	message = "Vaccine availability status for 18 and above in your district: {}"
 	availabile_18 = ""
 
+	pprint(result['18+'])
 	for slot in result['18+'].keys():
 		availabile_18 += slot + "({}) - {}, ".format(result['18+'][slot]['available_capacity'], result['18+'][slot]['dates'][0])
 
